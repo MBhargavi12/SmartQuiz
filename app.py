@@ -32,7 +32,10 @@ genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
 model = genai.GenerativeModel('gemini-flash-lite-latest')
 app.secret_key = os.getenv('SECRET_KEY', 'dev-fallback-key-change-me')
  
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///smartquiz.db'
+database_url = os.getenv('DATABASE_URL', 'sqlite:///smartquiz.db')
+if database_url.startswith('postgres://'):
+    database_url = database_url.replace('postgres://', 'postgresql://', 1)
+app.config['SQLALCHEMY_DATABASE_URI'] = database_url
 db = SQLAlchemy(app)
 app.config['MAIL_SERVER'] = 'smtp.gmail.com'
 app.config['MAIL_PORT'] = 587
