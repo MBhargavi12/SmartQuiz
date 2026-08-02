@@ -259,8 +259,8 @@ def ai_quiz():
         num_questions = int(request.form.get('num_questions', 5))
         difficulty = request.form.get('difficulty', 'Medium')
  
-        if num_questions > 20:
-            num_questions = 20
+        if num_questions > 100:
+            num_questions = 100
  
         prompt = f"""Generate {num_questions} multiple choice questions on the topic "{topic}"
         at a {difficulty} difficulty level.
