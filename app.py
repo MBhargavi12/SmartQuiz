@@ -71,33 +71,36 @@ class Question(db.Model):
     correct_option = db.Column(db.String(1), nullable=False)
  
  
+import gc
+
 def extract_text_from_pdf(pdf_path):
     pdf = fitz.open(pdf_path)
- 
+
     text = ""
     for page in pdf:
         text += page.get_text()
- 
+
     if not text.strip():
         text = ""
-        # Limit OCR to first 8 pages to avoid running out of memory on free hosting
-        max_ocr_pages = 8
+        # Limit OCR to first 3 pages only — free hosting has very limited RAM
+        max_ocr_pages = 3
         for i, page in enumerate(pdf):
             if i >= max_ocr_pages:
                 break
- 
+
             # Lower DPI = much less memory used per page
-            pix = page.get_pixmap(dpi=100)
+            pix = page.get_pixmap(dpi=70)
             img_bytes = pix.tobytes("png")
             img = Image.open(io.BytesIO(img_bytes)).convert("L")  # grayscale, smaller in memory
- 
+
             text += pytesseract.image_to_string(img)
- 
+
             # Explicitly free memory before moving to next page
             img.close()
             pix = None
             del img_bytes
- 
+            gc.collect()
+
     pdf.close()
     return text
  
@@ -310,6 +313,11 @@ def pdf_quiz():
     filename = secure_filename(pdf_file.filename)
     pdf_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
     pdf_file.save(pdf_path)
+    file_size = os.path.getsize(pdf_path)
+    if file_size > 5 * 1024 * 1024:  # 5MB limit
+        os.remove(pdf_path)
+        flash("PDF is too large. Please upload a file under 5MB.")
+        return redirect(url_for('ai_quiz'))
  
     pdf_text = extract_text_from_pdf(pdf_path)
  
