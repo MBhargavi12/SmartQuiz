@@ -9,7 +9,11 @@ from dotenv import load_dotenv
  
 # IMPORTANT: Update this path to where you installed Tesseract-OCR on your PC
 # (this is the default install location on Windows)
-pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
+import platform
+if platform.system() == 'Windows':
+    import platform
+    if platform.system() == 'Windows':
+      pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
  
 from flask import Flask, render_template, request, redirect, url_for, session, flash
 from flask_sqlalchemy import SQLAlchemy
