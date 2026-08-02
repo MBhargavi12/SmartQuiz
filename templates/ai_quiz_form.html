@@ -45,12 +45,7 @@
             </select>
 
             <label>Number of Questions</label>
-            <select name="num_questions" style="width:100%; padding:12px 14px; border:1px solid #e2e8f0; border-radius:10px; font-size:14px; margin-bottom:14px;">
-                <option value="5">5 Questions</option>
-                <option value="10">10 Questions</option>
-                <option value="15">15 Questions</option>
-                <option value="20">20 Questions</option>
-            </select>
+              <input type="number" name="num_questions" min="1" max="100" value="5" placeholder="Enter number of questions (max 100)" style="width:100%; padding:12px 14px; border:1px solid #e2e8f0; border-radius:10px; font-size:14px; margin-bottom:14px;">
 
             <button type="submit" class="pill-btn primary">Generate Quiz →</button>
         </form>
