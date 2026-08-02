@@ -484,8 +484,8 @@ def logout():
     return redirect(url_for('login'))
  
  
-if __name__ == "__main__":
-    with app.app_context():
-        db.create_all()
-    debug_mode = os.getenv('FLASK_DEBUG', 'True') == 'True'
-    app.run(debug=debug_mode)
+with app.app_context():
+    db.create_all()
+
+if __name__ == '__main__':
+    app.run(debug=True)
