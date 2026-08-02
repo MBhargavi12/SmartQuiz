@@ -315,10 +315,11 @@ def pdf_quiz():
     pdf_file.save(pdf_path)
     file_size = os.path.getsize(pdf_path)
     file_size = os.path.getsize(pdf_path)
+    file_size = os.path.getsize(pdf_path)
     if file_size > 15 * 1024 * 1024:  # 15MB limit
-       os.remove(pdf_path)
-       flash("PDF is too large. Please upload a file under 15MB.")
-       return redirect(url_for('ai_quiz'))
+        os.remove(pdf_path)
+        flash("PDF is too large. Please upload a file under 15MB.")
+        return redirect(url_for('ai_quiz'))
  
     pdf_text = extract_text_from_pdf(pdf_path)
  
