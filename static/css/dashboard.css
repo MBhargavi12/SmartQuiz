@@ -1,0 +1,145 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:#bae6fd; /* light sky-blue, consistent across whole page */
+    min-height:100vh;
+    color:#0f172a;
+}
+
+/* ===========================
+        NAVBAR
+=========================== */
+
+nav{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:25px 80px;
+    background:transparent;
+}
+
+.logo{
+    font-size:28px;
+    font-weight:700;
+    color:#0f172a;
+}
+
+.nav-right{
+    display:flex;
+    align-items:center;
+    gap:20px;
+}
+
+.welcome-text{
+    font-size:16px;
+    font-weight:600;
+    color:#0f172a;
+}
+
+.logout-btn{
+    padding:10px 22px;
+    border:2px solid #0f172a;
+    border-radius:10px;
+    color:#0f172a;
+    text-decoration:none;
+    font-weight:600;
+    transition:0.3s;
+}
+
+.logout-btn:hover{
+    background:#0f172a;
+    color:#bae6fd;
+}
+
+/* ===========================
+        HERO SECTION
+=========================== */
+
+.dashboard-hero{
+    min-height: calc(100vh - 100px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+    background:transparent;
+    color:#0f172a;
+}
+
+.dashboard-hero h1{
+    font-size:48px;
+    margin-bottom:15px;
+    color:#0f172a;
+}
+
+.dashboard-hero p{
+    font-size:20px;
+    color:#1e293b;
+}
+
+/* ===========================
+        CATEGORIES / AI CARD SECTION
+=========================== */
+
+.dashboard-categories{
+    padding:80px;
+    text-align:center;
+    background:transparent;
+}
+
+.dashboard-categories h2{
+    font-size:36px;
+    margin-bottom:40px;
+    color:#0f172a;
+}
+
+.ai-quiz-highlight{
+    max-width:600px;
+    margin:0 auto;
+    padding:50px;
+    background:#7dd3fc;
+    border-radius:24px;
+    box-shadow:0 15px 40px rgba(14, 165, 233, 0.3);
+    text-align:center;
+}
+
+.ai-icon{
+    font-size:56px;
+    margin-bottom:18px;
+}
+
+.ai-quiz-highlight h3{
+    font-size:28px;
+    margin-bottom:14px;
+    color:#0f172a;
+}
+
+.ai-quiz-highlight p{
+    font-size:16px;
+    color:#0f172a;
+    line-height:1.7;
+    margin-bottom:28px;
+}
+
+.ai-cta-btn{
+    display:inline-block;
+    padding:15px 40px;
+    background:#0f172a;
+    color:white;
+    border-radius:14px;
+    text-decoration:none;
+    font-weight:600;
+    font-size:16px;
+    transition:0.3s;
+}
+
+.ai-cta-btn:hover{
+    transform:translateY(-3px);
+    box-shadow:0 10px 25px rgba(0,0,0,0.2);
+}

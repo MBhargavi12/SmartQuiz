@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - SmartQuiz</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="blue-page">
+
+    <div class="brand-name">SmartQuiz</div>
+
+    <!-- decorative cloud shapes -->
+    <div class="cloud cloud1"></div>
+    <div class="cloud cloud2"></div>
+    <div class="cloud cloud3"></div>
+
+    <div class="login-card">
+
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <div class="flash-message">
+                    {% for message in messages %}
+                        <p>⚠️ {{ message }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+
+        <h1>Welcome</h1>
+        <p class="subtitle">Here you log in securely</p>
+
+        <svg class="illustration" viewBox="0 0 200 170" xmlns="http://www.w3.org/2000/svg">
+            <ellipse cx="100" cy="152" rx="62" ry="9" fill="#e0f2fe"/>
+
+            <path d="M62 130 Q100 148 138 130 Q136 118 100 120 Q64 118 62 130 Z" fill="#0284c7"/>
+
+            <path d="M76 78 Q76 64 100 62 Q124 64 124 78 L126 128 Q100 136 74 128 Z" fill="#0ea5e9"/>
+
+            <rect x="93" y="55" width="14" height="12" rx="4" fill="#f8c98a"/>
+
+            <circle cx="100" cy="46" r="20" fill="#fbcf8d"/>
+
+            <path d="M80 42 Q78 24 100 24 Q122 24 120 42 Q118 30 100 30 Q82 30 80 42 Z" fill="#2b2118"/>
+            <path d="M80 40 Q79 46 82 50 Q79 45 80 40 Z" fill="#2b2118"/>
+            <path d="M120 40 Q121 46 118 50 Q121 45 120 40 Z" fill="#2b2118"/>
+
+            <circle cx="79" cy="47" r="3.5" fill="#f8c98a"/>
+            <circle cx="121" cy="47" r="3.5" fill="#f8c98a"/>
+
+            <circle cx="92" cy="48" r="6.5" fill="none" stroke="#2b2118" stroke-width="2"/>
+            <circle cx="108" cy="48" r="6.5" fill="none" stroke="#2b2118" stroke-width="2"/>
+            <line x1="98.5" y1="48" x2="101.5" y2="48" stroke="#2b2118" stroke-width="2"/>
+            <line x1="85.7" y1="46" x2="80" y2="44" stroke="#2b2118" stroke-width="1.5"/>
+            <line x1="114.3" y1="46" x2="120" y2="44" stroke="#2b2118" stroke-width="1.5"/>
+
+            <path d="M96 58 Q100 60.5 104 58" stroke="#c2703d" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+
+            <path d="M78 86 Q64 96 66 112" stroke="#0284c7" stroke-width="11" fill="none" stroke-linecap="round"/>
+            <path d="M122 86 Q136 96 134 112" stroke="#0284c7" stroke-width="11" fill="none" stroke-linecap="round"/>
+
+            <circle cx="66" cy="114" r="6" fill="#f8c98a"/>
+            <circle cx="134" cy="114" r="6" fill="#f8c98a"/>
+
+            <path d="M66 106 Q84 100 99 105 L99 122 Q84 118 66 123 Z" fill="#ffffff" stroke="#d6dee6" stroke-width="1.2"/>
+            <path d="M134 106 Q116 100 101 105 L101 122 Q116 118 134 123 Z" fill="#ffffff" stroke="#d6dee6" stroke-width="1.2"/>
+            <path d="M99 105 Q100 113.5 99 122" stroke="#d6dee6" stroke-width="1.2" fill="none"/>
+            <path d="M101 105 Q100 113.5 101 122" stroke="#d6dee6" stroke-width="1.2" fill="none"/>
+            <line x1="71" y1="110" x2="93" y2="106" stroke="#eef2f6" stroke-width="1.3"/>
+            <line x1="71" y1="115" x2="93" y2="111" stroke="#eef2f6" stroke-width="1.3"/>
+            <line x1="107" y1="106" x2="129" y2="110" stroke="#eef2f6" stroke-width="1.3"/>
+            <line x1="107" y1="111" x2="129" y2="115" stroke="#eef2f6" stroke-width="1.3"/>
+
+            <circle cx="150" cy="52" r="3" fill="#fcd34d" opacity="0.9"/>
+            <circle cx="52" cy="66" r="2.2" fill="#bae6fd"/>
+        </svg>
+
+        <form method="POST" action="/login">
+            <label>Email</label>
+            <input type="email" name="email" placeholder="Enter your email" required>
+
+            <label>Password</label>
+            <input type="password" name="password" placeholder="Enter your password" required>
+            <a href="/forgot-password" style="display:block; text-align:right; font-size:12px; color:#0ea5e9; margin-top:-12px; margin-bottom:8px; text-decoration:none;">Forgot Password?</a>
+
+            <button type="submit" class="pill-btn primary">Log in</button>
+        </form>
+
+        <a href="/register" class="pill-btn secondary">Sign Up</a>
+
+    </div>
+
+</div>
+
+</body>
+</html>

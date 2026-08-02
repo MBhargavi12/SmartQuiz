@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AI Quiz - SmartQuiz</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="blue-page" style="flex-direction:column; padding-top:30px;">
+
+    <div class="brand-name" style="position:static; margin-bottom:20px; display:flex; justify-content:space-between; width:100%; max-width:650px; align-items:center;">
+        <span>SmartQuiz</span>
+        <a href="/dashboard" style="font-size:14px; background:white; color:#0369a1; padding:8px 18px; border-radius:20px; text-decoration:none; font-weight:600;">✕ Exit</a>
+    </div>
+
+    <div class="cloud cloud1"></div>
+    <div class="cloud cloud2"></div>
+    <div class="cloud cloud3"></div>
+
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <div class="flash-message" style="max-width:400px;">
+                {% for message in messages %}
+                    <p>⚠️ {{ message }}</p>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+
+    <div class="login-card" style="max-width:600px; margin-bottom:20px;">
+        <h1 style="font-size:22px;">🤖 Enter a Topic</h1>
+        <p class="subtitle">e.g. Python, DBMS, Machine Learning</p>
+
+        <form method="POST" action="/ai-quiz">
+            <label>Topic</label>
+            <input type="text" name="topic" placeholder="Type your topic..." required>
+
+            <label>Difficulty</label>
+            <select name="difficulty" style="width:100%; padding:12px 14px; border:1px solid #e2e8f0; border-radius:10px; font-size:14px; margin-bottom:14px;">
+                <option value="Easy">Easy</option>
+                <option value="Medium" selected>Medium</option>
+                <option value="Hard">Hard</option>
+            </select>
+
+            <label>Number of Questions</label>
+            <select name="num_questions" style="width:100%; padding:12px 14px; border:1px solid #e2e8f0; border-radius:10px; font-size:14px; margin-bottom:14px;">
+                <option value="5">5 Questions</option>
+                <option value="10">10 Questions</option>
+                <option value="15">15 Questions</option>
+                <option value="20">20 Questions</option>
+            </select>
+
+            <button type="submit" class="pill-btn primary">Generate Quiz →</button>
+        </form>
+    </div>
+
+    <p style="color:white; font-size:13px; margin-bottom:20px;">— OR —</p>
+
+    <div class="login-card" style="max-width:600px;">
+        <h1 style="font-size:22px;">📄 Upload a PDF</h1>
+        <p class="subtitle">We'll generate questions from your notes</p>
+
+        <form method="POST" action="/pdf-quiz" enctype="multipart/form-data">
+            <label for="pdfFileInput" style="display:block; padding:22px; border:2px dashed #7dd3fc; border-radius:14px; text-align:center; cursor:pointer; margin-bottom:14px; background:#f0f9ff;">
+                <span style="font-size:24px; display:block;">📎</span>
+                <span style="font-size:13px; color:#0369a1;">Click to choose a PDF file</span>
+            </label>
+            <input type="file" name="pdf_file" id="pdfFileInput" accept="application/pdf" required style="display:none;">
+            <p id="fileNameDisplay" style="text-align:center; font-size:13px; color:#16a34a; margin-bottom:12px;"></p>
+
+            <label>Difficulty</label>
+            <select name="difficulty" style="width:100%; padding:12px 14px; border:1px solid #e2e8f0; border-radius:10px; font-size:14px; margin-bottom:14px;">
+                <option value="Easy">Easy</option>
+                <option value="Medium" selected>Medium</option>
+                <option value="Hard">Hard</option>
+            </select>
+
+            <label>Number of Questions</label>
+            <select name="num_questions" style="width:100%; padding:12px 14px; border:1px solid #e2e8f0; border-radius:10px; font-size:14px; margin-bottom:14px;">
+                <option value="5">5 Questions</option>
+                <option value="10">10 Questions</option>
+                <option value="15">15 Questions</option>
+                <option value="20">20 Questions</option>
+            </select>
+
+            <button type="submit" class="pill-btn primary">Generate Quiz from PDF →</button>
+        </form>
+    </div>
+
+</div>
+
+<script>
+document.getElementById('pdfFileInput').addEventListener('change', function() {
+    const fileNameDisplay = document.getElementById('fileNameDisplay');
+    fileNameDisplay.textContent = this.files.length > 0 ? "✅ Selected: " + this.files[0].name : "";
+});
+</script>
+
+</body>
+</html>

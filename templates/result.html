@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Result - SmartQuiz</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="blue-page" style="flex-direction:column;">
+
+    <div class="brand-name" style="position:static; margin-bottom:30px; display:flex; justify-content:space-between; width:100%; max-width:520px; align-items:center;">
+        <span>SmartQuiz</span>
+        <a href="/dashboard" style="font-size:14px; background:white; color:#0369a1; padding:8px 18px; border-radius:20px; text-decoration:none; font-weight:600;">Dashboard</a>
+    </div>
+
+    <div class="cloud cloud1"></div>
+    <div class="cloud cloud2"></div>
+
+    <div class="login-card" style="max-width:480px; padding:55px 45px; text-align:center;">
+        <div style="font-size:60px;">🎉</div>
+        <h1 style="font-size:30px; margin-top:10px;">Quiz Completed!</h1>
+        <p class="subtitle" style="font-size:16px;">{{ category }}</p>
+
+        <p style="font-size:44px; font-weight:800; color:#0f172a; margin:20px 0 30px;">{{ score }} / {{ total }}</p>
+
+        <a href="/review" class="pill-btn primary" style="display:block; text-decoration:none; margin-bottom:14px;">📝 Check Answers</a>
+        <a href="/dashboard" class="pill-btn secondary" style="display:block; text-decoration:none;">Back to Dashboard</a>
+    </div>
+
+</div>
+
+</body>
+</html>

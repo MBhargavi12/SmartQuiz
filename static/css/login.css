@@ -1,0 +1,291 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    min-height:100vh;
+}
+
+.blue-page{
+    position:relative;
+    min-height:100vh;
+    background: linear-gradient(180deg, #7dd3fc, #38bdf8);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
+    padding:40px 20px;
+}
+
+.brand-name{
+    position:absolute;
+    top:30px;
+    left:40px;
+    font-size:24px;
+    font-weight:700;
+    color:white;
+}
+
+/* decorative cloud blobs */
+.cloud{
+    position:absolute;
+    background:rgba(255,255,255,0.25);
+    border-radius:50%;
+}
+
+.cloud1{
+    width:120px; height:120px;
+    top:-30px; left:-30px;
+}
+
+.cloud2{
+    width:80px; height:80px;
+    bottom:60px; right:60px;
+}
+
+.cloud3{
+    width:50px; height:50px;
+    bottom:100px; left:80px;
+}
+
+.login-card{
+    position:relative;
+    background:white;
+    width:100%;
+    max-width:340px;
+    padding:40px 32px;
+    border-radius:28px;
+    box-shadow:0 20px 50px rgba(0,0,0,0.15);
+    text-align:center;
+}
+
+.login-card h1{
+    font-size:26px;
+    color:#0f172a;
+    margin-bottom:6px;
+}
+
+.subtitle{
+    color:#94a3b8;
+    font-size:14px;
+    margin-bottom:20px;
+}
+
+.illustration{
+    width:160px;
+    margin:0 auto 25px;
+    display:block;
+}
+
+.login-card form{
+    text-align:left;
+}
+
+.login-card label{
+    display:block;
+    font-size:13px;
+    color:#64748b;
+    margin-bottom:6px;
+    margin-top:14px;
+}
+
+.login-card input{
+    width:100%;
+    padding:12px 14px;
+    border:1px solid #e2e8f0;
+    border-radius:10px;
+    font-size:14px;
+    outline:none;
+    transition:0.3s;
+}
+
+.login-card input:focus{
+    border-color:#38bdf8;
+    box-shadow:0 0 0 3px rgba(56,189,248,0.15);
+}
+
+.pill-btn{
+    display:block;
+    width:100%;
+    padding:14px;
+    border-radius:30px;
+    font-size:15px;
+    font-weight:600;
+    text-align:center;
+    text-decoration:none;
+    cursor:pointer;
+    border:none;
+    margin-top:20px;
+    transition:0.3s;
+}
+
+.pill-btn.primary{
+    background:#0f172a;
+    color:white;
+}
+
+.pill-btn.primary:hover{
+    background:#1e293b;
+    transform:translateY(-2px);
+}
+
+.pill-btn.secondary{
+    background:#bae6fd;
+    color:#0369a1;
+    border:2px solid #7dd3fc;
+}
+
+.pill-btn.secondary:hover{
+    background:#7dd3fc;
+    transform:translateY(-2px);
+}
+
+.flash-message{
+    background: rgba(239, 68, 68, 0.1);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    color: #dc2626;
+    padding: 10px 14px;
+    border-radius: 10px;
+    margin-bottom: 16px;
+    font-size: 13px;
+    text-align:left;
+}
+
+.flash-message p{
+    margin: 0;
+}
+/* ===========================
+    QUIZ PAGE - BLUE THEME
+=========================== */
+
+.quiz-progress-row{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 14px;
+    font-size: 13px;
+    color: #0369a1;
+    font-weight: 600;
+}
+
+.quiz-timer-circle{
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: #0ea5e9;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.quiz-progress-track{
+    width: 100%;
+    height: 6px;
+    background: #e0f2fe;
+    border-radius: 10px;
+    margin-bottom: 22px;
+    overflow: hidden;
+}
+
+.quiz-progress-fill{
+    height: 100%;
+    background: linear-gradient(90deg, #38bdf8, #0ea5e9);
+    border-radius: 10px;
+    transition: width 0.4s ease;
+}
+
+.quiz-question-bubble{
+    background: linear-gradient(135deg, #38bdf8, #0ea5e9);
+    color: white;
+    border-radius: 18px;
+    padding: 22px;
+    margin-bottom: 22px;
+    position: relative;
+}
+
+.quiz-question-bubble .q-number{
+    position: absolute;
+    top: -12px;
+    left: 18px;
+    background: white;
+    color: #0369a1;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 13px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+.quiz-question-bubble p{
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.5;
+    margin-top: 4px;
+}
+
+.quiz-options{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.quiz-option{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: white;
+    border: 2px solid #e0f2fe;
+    border-radius: 12px;
+    padding: 12px 16px;
+    cursor: pointer;
+    transition: 0.25s;
+}
+
+.quiz-option:hover{
+    border-color: #7dd3fc;
+    background: #f0f9ff;
+}
+
+.quiz-option.selected{
+    background: #0ea5e9;
+    border-color: #0ea5e9;
+}
+
+.quiz-option.selected .quiz-option-text{
+    color: white;
+    font-weight: 600;
+}
+
+.quiz-option.selected .quiz-option-badge{
+    background: white;
+    color: #0ea5e9;
+}
+
+.quiz-option-badge{
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: #e0f2fe;
+    color: #0369a1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 13px;
+    flex-shrink: 0;
+}
+
+.quiz-option-text{
+    font-size: 14px;
+    color: #334155;
+}

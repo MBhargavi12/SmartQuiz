@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>PDF Quiz Generator</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/pdf_quiz.css') }}">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+</head>
+
+<body>
+
+<section class="pdf-container">
+
+    <div class="pdf-box">
+
+        <h1>📄 PDF Quiz Generator</h1>
+
+        <p>
+            Upload your study notes and let AI generate quiz questions instantly.
+        </p>
+        <form method="POST" enctype="multipart/form-data">
+
+         <input
+            type="file"
+            name="pdf"
+            accept=".pdf"
+            required>
+
+         <button type="submit">
+             Upload PDF
+         </button>
+
+        </form>
+
+
+    </div>
+
+</section>
+
+</body>
+
+</html>

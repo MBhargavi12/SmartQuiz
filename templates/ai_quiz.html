@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ topic }} AI Quiz - SmartQuiz</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="blue-page" style="flex-direction:column; padding-top:30px;">
+         <div class="brand-name" style="position:static; margin-bottom:20px; display:flex; justify-content:space-between; width:100%; max-width:700px; align-items:center;">
+           <span style="color:#0f172a !important;">SmartQuiz</span>
+           <a href="/dashboard" style="font-size:14px; background:white; color:#0f172a !important; padding:8px 18px; border-radius:20px; text-decoration:none; font-weight:600;">✕ Exit</a>
+         </div>
+
+        <div class="cloud cloud1"></div>
+        <div class="cloud cloud2"></div>
+
+        <div class="login-card" style="max-width:650px;">
+
+            <div class="quiz-progress-row">
+                <span id="qCounter">Question 1 of {{ questions|length }}</span>
+                <div class="quiz-timer-circle">
+                    <span id="timerText">30</span>
+                </div>
+            </div>
+
+            <div class="quiz-progress-track">
+                <div class="quiz-progress-fill" id="progressFill"></div>
+            </div>
+
+            <div id="quizContainer"></div>
+
+            <button id="nextBtn" class="pill-btn primary" style="border:none; cursor:pointer; margin-top:20px;">Next →</button>
+
+        </div>
+
+    </div>
+
+    <script id="quiz-data" type="application/json">{{ questions | tojson }}</script>
+
+    <form method="POST" action="/ai-quiz-submit" id="quizForm" style="display:none;">
+        <input type="hidden" name="topic" value="{{ topic }}">
+        <input type="hidden" name="questions_json" id="questionsJsonInput">
+        <div id="answersContainer"></div>
+    </form>
+
+    <script>
+        const questions = JSON.parse(document.getElementById('quiz-data').textContent);
+        let currentIndex = 0;
+        let selectedAnswers = {};
+        let timerInterval;
+        const TIME_PER_QUESTION = 30;
+
+        function renderQuestion(index) {
+            const q = questions[index];
+            const container = document.getElementById('quizContainer');
+            const letters = ['A', 'B', 'C', 'D'];
+            const optionKeys = ['option_a', 'option_b', 'option_c', 'option_d'];
+
+            let optionsHtml = '';
+            letters.forEach((letter, i) => {
+                const isSelected = selectedAnswers[index] === letter;
+                optionsHtml += `
+                    <div class="quiz-option ${isSelected ? 'selected' : ''}" data-letter="${letter}">
+                        <span class="quiz-option-badge">${letter}</span>
+                        <span class="quiz-option-text">${q[optionKeys[i]]}</span>
+                    </div>
+                `;
+            });
+
+            container.innerHTML = `
+                <div class="quiz-question-bubble">
+                    <span class="q-number">${index + 1}</span>
+                    <p>${q.question}</p>
+                </div>
+                <div class="quiz-options">${optionsHtml}</div>
+            `;
+
+            document.querySelectorAll('.quiz-option').forEach(opt => {
+                opt.addEventListener('click', function() {
+                    selectedAnswers[index] = this.dataset.letter;
+                    document.querySelectorAll('.quiz-option').forEach(o => o.classList.remove('selected'));
+                    this.classList.add('selected');
+                });
+            });
+
+            document.getElementById('qCounter').textContent = `Question ${index + 1} of ${questions.length}`;
+            document.getElementById('progressFill').style.width = `${((index + 1) / questions.length) * 100}%`;
+
+            const nextBtn = document.getElementById('nextBtn');
+            nextBtn.textContent = (index === questions.length - 1) ? 'Submit Quiz ✓' : 'Next →';
+
+            startTimer();
+        }
+
+        function startTimer() {
+            clearInterval(timerInterval);
+            let timeLeft = TIME_PER_QUESTION;
+            document.getElementById('timerText').textContent = timeLeft;
+
+            timerInterval = setInterval(() => {
+                timeLeft--;
+                document.getElementById('timerText').textContent = timeLeft;
+
+                if (timeLeft <= 0) {
+                    clearInterval(timerInterval);
+                    goNext();
+                }
+            }, 1000);
+        }
+
+        function goNext() {
+            clearInterval(timerInterval);
+            if (currentIndex < questions.length - 1) {
+                currentIndex++;
+                renderQuestion(currentIndex);
+            } else {
+                submitQuiz();
+            }
+        }
+
+        function submitQuiz() {
+            const answersDiv = document.getElementById('answersContainer');
+            questions.forEach((q, i) => {
+                const input = document.createElement('input');
+                input.type = 'hidden';
+                input.name = `q${i}`;
+                input.value = selectedAnswers[i] || '';
+                answersDiv.appendChild(input);
+            });
+
+            document.getElementById('questionsJsonInput').value = document.getElementById('quiz-data').textContent;
+            document.getElementById('quizForm').submit();
+        }
+
+        document.getElementById('nextBtn').addEventListener('click', goNext);
+
+        renderQuestion(currentIndex);
+    </script>
+
+</body>
+</html>

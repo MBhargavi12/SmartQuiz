@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ category }} Quiz - SmartQuiz</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/quiz.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <nav>
+        <div class="logo">SmartQuiz</div>
+        <a href="/dashboard" class="back-btn">← Back to Dashboard</a>
+    </nav>
+
+    <section class="quiz-page">
+
+        <h1>{{ category }} Quiz</h1>
+
+        {% if questions|length == 0 %}
+            <p class="no-questions">No questions available for this category yet.</p>
+        {% else %}
+        <form method="POST" action="/quiz/{{ category }}">
+
+            {% for q in questions %}
+            <div class="question-block">
+                <p class="question-text">{{ loop.index }}. {{ q.question_text }}</p>
+
+                <label class="option">
+                    <input type="radio" name="q{{ q.id }}" value="A" required> {{ q.option_a }}
+                </label>
+                <label class="option">
+                    <input type="radio" name="q{{ q.id }}" value="B"> {{ q.option_b }}
+                </label>
+                <label class="option">
+                    <input type="radio" name="q{{ q.id }}" value="C"> {{ q.option_c }}
+                </label>
+                <label class="option">
+                    <input type="radio" name="q{{ q.id }}" value="D"> {{ q.option_d }}
+                </label>
+            </div>
+            {% endfor %}
+
+            <button type="submit" class="submit-btn">Submit Quiz</button>
+        </form>
+        {% endif %}
+
+    </section>
+
+</body>
+</html>

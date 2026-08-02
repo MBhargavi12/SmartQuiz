@@ -1,0 +1,104 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+
+    min-height:100vh;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:linear-gradient(135deg,#312e81,#2563eb,#38bdf8);
+
+}
+
+.pdf-box{
+
+    width:550px;
+
+    padding:45px;
+
+    background:rgba(255,255,255,.12);
+
+    backdrop-filter:blur(20px);
+
+    border-radius:20px;
+
+    border:1px solid rgba(255,255,255,.2);
+
+    text-align:center;
+
+    color:white;
+
+    box-shadow:0 20px 40px rgba(0,0,0,.25);
+
+}
+
+.pdf-box h1{
+
+    font-size:38px;
+
+    margin-bottom:20px;
+
+}
+
+.pdf-box p{
+
+    margin-bottom:35px;
+
+    line-height:1.7;
+
+}
+
+.pdf-box input{
+
+    width:100%;
+
+    padding:14px;
+
+    margin-bottom:25px;
+
+    border-radius:10px;
+
+    border:none;
+
+    background:white;
+
+}
+
+.pdf-box button{
+
+    width:100%;
+
+    padding:15px;
+
+    background:white;
+
+    color:#2563eb;
+
+    border:none;
+
+    border-radius:10px;
+
+    font-size:18px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.pdf-box button:hover{
+
+    transform:translateY(-3px);
+
+}

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - SmartQuiz</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <nav>
+        <div class="logo">SmartQuiz</div>
+
+        <div class="nav-right">
+            <span class="welcome-text">Hi, {{ user_name }} 👋</span>
+            <a href="/logout" class="logout-btn">Logout</a>
+        </div>
+    </nav>
+
+    <section class="dashboard-hero">
+        <h1>Welcome back, {{ user_name }}! 🚀</h1>
+        <p>Ready to continue your learning journey?</p>
+    </section>
+
+    <section class="dashboard-categories">
+        <h2>Ready to Test Yourself?</h2>
+
+        <div class="ai-quiz-highlight">
+            <div class="ai-icon">🤖</div>
+            <h3>AI-Powered Quiz Generator</h3>
+            <p>Type any topic or upload your notes (PDF) — get instant, custom quiz questions powered by AI.</p>
+            <a href="/ai-quiz" class="ai-cta-btn">Start Quiz →</a>
+        </div>
+    </section>
+
+</body>
+</html>

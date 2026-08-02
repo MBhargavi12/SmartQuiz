@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartQuiz</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <nav>
+
+    <div class="logo">
+        SmartQuiz
+    </div>
+
+    <div class="nav-center">
+
+        <a href="#">Home</a>
+        <a href="#">Categories</a>
+        <a href="#">Features</a>
+        <a href="#">About</a>
+
+    </div>
+
+    <div class="nav-right">
+
+    <a href="{{ url_for('login') }}">Login</a>
+
+    <a href="/register" class="register-btn">
+        Register
+    </a>
+
+    </div>
+
+   </nav>
+
+    <section class="hero">
+
+        <h1>Ace Every Quiz,<br>Build Your Future</h1>
+
+        <p>
+            Practice Coding, Aptitude, DBMS, Operating Systems,
+            Computer Networks and HR Interview questions in one platform.
+        </p>
+
+        <div class="hero-buttons">
+            <button>Get Started</button>
+            <button class="secondary">Explore Quizzes</button>
+        </div>
+
+    </section>
+
+    <section class="features">
+
+    <h2>Why Choose SmartQuiz?</h2>
+
+    <div class="feature-container">
+
+        <div class="feature-card">
+
+            <h3>💻 Programming</h3>
+
+            <p>
+                Practice coding questions and improve your problem-solving skills.
+            </p>
+
+        </div>
+
+        <div class="feature-card">
+
+            <h3>📊 Aptitude</h3>
+
+            <p>
+                Prepare for placement aptitude with quantitative, logical and verbal tests.
+            </p>
+
+        </div>
+
+        <div class="feature-card">
+
+            <h3>🎯 Interview Prep</h3>
+
+            <p>
+                Get ready for technical and HR interviews with curated questions.
+            </p>
+
+        </div>
+
+    </div>
+
+    </section>
+    <section class="categories">
+
+    <h2>Popular Categories</h2>
+
+    <div class="category-container">
+
+        <div class="category-card">
+            <h3>💻 Programming</h3>
+        </div>
+
+        <div class="category-card">
+            <h3>📊 Aptitude</h3>
+        </div>
+
+        <div class="category-card">
+            <h3>🗄 DBMS</h3>
+        </div>
+
+        <div class="category-card">
+            <h3>🌐 Computer Networks</h3>
+        </div>
+
+        <div class="category-card">
+            <h3>⚙ Operating Systems</h3>
+        </div>
+
+        <div class="category-card">
+            <h3>🎤 HR Interview</h3>
+        </div>
+
+    </div>
+
+    </section>
+    <section class="featured">
+
+    <h2>Featured Quizzes</h2>
+
+    <div class="quiz-container">
+
+        <div class="quiz-card">
+
+            <h3>Python Basics</h3>
+
+            <p>20 Questions</p>
+
+            <button>Start Quiz</button>
+
+        </div>
+
+        <div class="quiz-card">
+
+            <h3>Java Programming</h3>
+
+            <p>25 Questions</p>
+
+            <button>Start Quiz</button>
+
+        </div>
+
+        <div class="quiz-card">
+
+            <h3>DBMS</h3>
+
+            <p>15 Questions</p>
+
+            <button>Start Quiz</button>
+
+        </div>
+
+    </div>
+
+    </section>
+
+    </section>
+
+</body>
+</html>

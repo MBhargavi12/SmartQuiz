@@ -1,0 +1,130 @@
+/* ===========================
+        REGISTER PAGE
+=========================== */
+
+.login-page{
+
+    min-height:100vh;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:40px;
+
+    background: linear-gradient(135deg, #4b6cb7, #2563eb);
+}
+
+.login-box{
+
+    width:450px;
+
+    padding:45px;
+
+    background:rgba(255,255,255,.12);
+
+    backdrop-filter:blur(20px);
+
+    border:1px solid rgba(255,255,255,.2);
+
+    border-radius:25px;
+
+    box-shadow:0 20px 40px rgba(0,0,0,.25);
+
+    color:white;
+}
+
+.login-box h1{
+
+    font-size:42px;
+
+    margin-bottom:10px;
+}
+
+.login-box p{
+
+    color:#f2f2f2;
+
+    margin-bottom:25px;
+}
+
+.login-box label{
+
+    display:block;
+
+    margin-bottom:8px;
+
+    font-size:16px;
+
+    font-weight:500;
+}
+
+.login-box input{
+
+    width:100%;
+
+    padding:15px;
+
+    margin-bottom:20px;
+
+    border:none;
+
+    border-radius:10px;
+
+    font-size:16px;
+
+    outline:none;
+}
+
+.login-btn{
+
+    width:100%;
+
+    margin-top:10px;
+
+    background:white;
+
+    color:#2563eb;
+
+    font-size:18px;
+
+    font-weight:600;
+}
+
+.register-text{
+
+    margin-top:25px;
+
+    text-align:center;
+}
+
+.register-text a{
+
+    color:white;
+
+    font-weight:600;
+
+    text-decoration:none;
+}
+
+.register-text a:hover{
+
+    text-decoration:underline;
+}
+.flash-message{
+    background: rgba(239, 68, 68, 0.2);
+    border: 1px solid rgba(239, 68, 68, 0.5);
+    color: #fecaca;
+    padding: 12px 18px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    font-size: 14px;
+    text-align: left;
+}
+
+.flash-message p{
+    margin: 0;
+    color: #fecaca;
+}
