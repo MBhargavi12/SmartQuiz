@@ -11,6 +11,113 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* ---- Hero Slideshow ---- */
+        .slideshow {
+            position: relative;
+            max-width: 700px;
+            margin: 40px auto 0 auto;
+            border-radius: 16px;
+            overflow: hidden;
+            min-height: 220px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+        }
+
+        .slide {
+            display: none;
+            padding: 40px 30px;
+            text-align: center;
+            color: #fff;
+            min-height: 220px;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .slide.active {
+            display: flex;
+            animation: fadeIn 0.8s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .slide h3 {
+            font-size: 1.6rem;
+            margin-bottom: 10px;
+        }
+
+        .slide p {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        .slide-1 { background: linear-gradient(135deg, #6366f1, #8b5cf6); }
+        .slide-2 { background: linear-gradient(135deg, #06b6d4, #3b82f6); }
+        .slide-3 { background: linear-gradient(135deg, #ec4899, #f97316); }
+
+        .slide-dots {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 14px;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.4);
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .dot.active {
+            background: #fff;
+        }
+
+        /* ---- About Section ---- */
+        .about-section {
+            padding: 70px 40px;
+            text-align: center;
+        }
+
+        .about-section h2 {
+            margin-bottom: 20px;
+        }
+
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.05rem;
+            line-height: 1.7;
+            opacity: 0.9;
+        }
+
+        .about-stats {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+
+        .about-stat h3 {
+            font-size: 2rem;
+            margin-bottom: 5px;
+        }
+
+        .about-stat p {
+            opacity: 0.8;
+        }
+    </style>
 </head>
 
 <body>
@@ -23,10 +130,10 @@
 
     <div class="nav-center">
 
-        <a href="/">Home</a>
-        <a href="#">Categories</a>
-        <a href="#">Features</a>
-        <a href="#">About</a>
+        <a href="#home">Home</a>
+        <a href="#categories">Categories</a>
+        <a href="#features">Features</a>
+        <a href="#about">About</a>
 
     </div>
 
@@ -42,7 +149,7 @@
 
    </nav>
 
-    <section class="hero">
+    <section class="hero" id="home">
 
         <h1>Ace Every Quiz,<br>Build Your Future</h1>
 
@@ -50,14 +157,36 @@
             Practice Coding, Aptitude, DBMS, Operating Systems,
             Computer Networks and HR Interview questions in one platform.
         </p>
+
         <div class="hero-buttons">
-          <a href="/register"><button>Get Started</button></a>
-          <a href="/login"><button class="secondary">Explore Quizzes</button></a>
+            <a href="/register"><button>Get Started</button></a>
+            <a href="/login"><button class="secondary">Explore Quizzes</button></a>
+        </div>
+
+        <div class="slideshow">
+            <div class="slide slide-1 active">
+                <h3>📚 500+ Practice Questions</h3>
+                <p>Covering Programming, Aptitude, DBMS, OS and Networks.</p>
+            </div>
+            <div class="slide slide-2">
+                <h3>🤖 AI-Generated Quizzes</h3>
+                <p>Turn any topic or PDF into a custom quiz instantly.</p>
+            </div>
+            <div class="slide slide-3">
+                <h3>🎯 Track Your Progress</h3>
+                <p>Review answers with detailed explanations after every quiz.</p>
+            </div>
+
+            <div class="slide-dots">
+                <span class="dot active" onclick="goToSlide(0)"></span>
+                <span class="dot" onclick="goToSlide(1)"></span>
+                <span class="dot" onclick="goToSlide(2)"></span>
+            </div>
         </div>
 
     </section>
 
-    <section class="features">
+    <section class="features" id="features">
 
     <h2>Why Choose SmartQuiz?</h2>
 
@@ -96,7 +225,7 @@
     </div>
 
     </section>
-    <section class="categories">
+    <section class="categories" id="categories">
 
     <h2>Popular Categories</h2>
 
@@ -136,10 +265,14 @@
     <div class="quiz-container">
 
         <div class="quiz-card">
-           <h3>Python Basics</h3>
-           <p>20 Questions</p>
-           <a href="/login"><button>Start Quiz</button></a>
-        </div> 
+
+            <h3>Python Basics</h3>
+
+            <p>20 Questions</p>
+
+            <a href="/login"><button>Start Quiz</button></a>
+
+        </div>
 
         <div class="quiz-card">
 
@@ -147,7 +280,7 @@
 
             <p>25 Questions</p>
 
-            <button>Start Quiz</button>
+            <a href="/login"><button>Start Quiz</button></a>
 
         </div>
 
@@ -157,7 +290,7 @@
 
             <p>15 Questions</p>
 
-            <button>Start Quiz</button>
+            <a href="/login"><button>Start Quiz</button></a>
 
         </div>
 
@@ -165,7 +298,57 @@
 
     </section>
 
+    <section class="about-section" id="about">
+
+        <h2>About SmartQuiz</h2>
+
+        <div class="about-content">
+            <p>
+                SmartQuiz is a placement preparation platform built to help students practice
+                smarter, not harder. Whether you're brushing up on core CS subjects, prepping
+                for coding rounds, or getting ready for HR interviews, SmartQuiz brings everything
+                into one simple, focused place — including AI-generated quizzes from any topic
+                or study material you upload.
+            </p>
+        </div>
+
+        <div class="about-stats">
+            <div class="about-stat">
+                <h3>500+</h3>
+                <p>Practice Questions</p>
+            </div>
+            <div class="about-stat">
+                <h3>6</h3>
+                <p>Core Categories</p>
+            </div>
+            <div class="about-stat">
+                <h3>AI</h3>
+                <p>Powered Quiz Generator</p>
+            </div>
+        </div>
+
     </section>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const dots = document.querySelectorAll('.dot');
+
+        function goToSlide(index) {
+            slides[currentSlide].classList.remove('active');
+            dots[currentSlide].classList.remove('active');
+            currentSlide = index;
+            slides[currentSlide].classList.add('active');
+            dots[currentSlide].classList.add('active');
+        }
+
+        function nextSlide() {
+            let next = (currentSlide + 1) % slides.length;
+            goToSlide(next);
+        }
+
+        setInterval(nextSlide, 3500);
+    </script>
 
 </body>
 </html>
