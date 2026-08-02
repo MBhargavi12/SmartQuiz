@@ -80,11 +80,23 @@ def extract_text_from_pdf(pdf_path):
  
     if not text.strip():
         text = ""
-        for page in pdf:
-            pix = page.get_pixmap(dpi=150)
+        # Limit OCR to first 8 pages to avoid running out of memory on free hosting
+        max_ocr_pages = 8
+        for i, page in enumerate(pdf):
+            if i >= max_ocr_pages:
+                break
+ 
+            # Lower DPI = much less memory used per page
+            pix = page.get_pixmap(dpi=100)
             img_bytes = pix.tobytes("png")
-            img = Image.open(io.BytesIO(img_bytes))
+            img = Image.open(io.BytesIO(img_bytes)).convert("L")  # grayscale, smaller in memory
+ 
             text += pytesseract.image_to_string(img)
+ 
+            # Explicitly free memory before moving to next page
+            img.close()
+            pix = None
+            del img_bytes
  
     pdf.close()
     return text
